@@ -2,7 +2,7 @@ This repository contains a simple Emacs Lisp package to lookup Scimago
 quartiles for mathematics journals with completion. I wrote it because
 the Scimago website amazingly does not have any completion! Also, once
 I learned I can download the data, I wanted to have it locally for
-speed and convenience, but also to avoid looking at adds.
+speed and convenience, but also to avoid looking at ads.
 
 The data needs to be downloaded before using the package, that's what
 the ~sjr.bqn~ program is for. There's no good reason to write it in BQN
