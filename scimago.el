@@ -2,7 +2,7 @@
 
 (require 'tabulated-list)
 
-(defcustom scimago-data-file "mathsjr.el"
+(defcustom scimago-data-file "mathsjr.lisp"
   "Location of files containing Scimago data.")
 
 (defvar scimago-data
