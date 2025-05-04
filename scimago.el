@@ -3,7 +3,9 @@
 (require 'tabulated-list)
 
 (defcustom scimago-data-file "mathsjr.lisp"
-  "Location of files containing Scimago data.")
+  "Location of files containing Scimago data."
+  :group 'scimago
+  :type 'file)
 
 (defvar scimago-data
   (with-temp-buffer
