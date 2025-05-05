@@ -6,7 +6,7 @@ csv ⇐ ⟨""";"∾@+10⟩ •Import bqnlibs •file.At "csv.bqn"
 
 DL ⇐ {
  y ← •Fmt 𝕩
- ⊑•SH ⟨"wget", "-O", "scimagojr_"∾y∾".csv",
+ ⊑•SH ⟨"wget", "-O", "data/scimagojr_"∾y∾".csv",
        "https://www.scimagojr.com/journalrank.php?year="∾y∾"&type=all&out=xls"⟩
 }
 
