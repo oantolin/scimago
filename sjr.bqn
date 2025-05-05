@@ -10,9 +10,9 @@ DL ⇐ {
        "https://www.scimagojr.com/journalrank.php?year="∾y∾"&type=all&out=xls"⟩
 }
 
-SJR ⇐ {csv.Split ¯1↓•file.Chars "scimagojr_"∾(•Fmt 𝕩)∾".csv"}
+SJR ⇐ {csv.Split ¯1↓•file.Chars "data/scimagojr_"∾(•Fmt 𝕩)∾".csv"}
 
-Years ⇐ {𝕊:∧(•ParseFloat 10↓¯4↓⊢)¨("scimagojr_"≡10⊸↑)¨⊸/•file.List""}
+Years ⇐ {𝕊:∧(•ParseFloat 10↓¯4↓⊢)¨("scimagojr_"≡10⊸↑)¨⊸/•file.List "data"}
 
 MathJournals ⇐ {
  fields‿table ← (⊑ ⋈ ⍉∘>∘(1⊸↓)) SJR 𝕩
@@ -24,7 +24,7 @@ MathJournals ⇐ {
 WriteMathCSV ⇐ {𝕤
  mj ← MathJournals¨ y ← Years@
  all ← ∧ ∾´ y {[t,q]←𝕩 ⋄ ⍉[t,(≠t)⥊<•Fmt 𝕨,q]}¨ mj
- "mathsjr.csv" •file.Chars csv.Join all
+ "data/mathsjr.csv" •file.Chars csv.Join all
 }
 
 EscapeQuotes ⇐ {e←≠`'"'=s←(1+'"'=𝕩)/𝕩⋄'\'¨⌾(e⊸/)s}
@@ -34,5 +34,5 @@ WriteMathElisp ⇐ {𝕤
  mj ← MathJournals¨ y ← Years@
  all ← ∧ ∾´ y {[t,q]←𝕩 ⋄ ⍉[t,(≠t)⥊<•Fmt 𝕨,q]}¨ mj
  lines ← ('('∾')'∾˜⊢)∘(1⊸↓∘∾' '⊸∾¨)∘(ElispString¨)¨ <˘ all
- "mathsjr.el" •file.Lines ⟨"("⟩∾lines∾⟨")"⟩
+ "data/mathsjr.lisp" •file.Lines ⟨"("⟩∾lines∾⟨")"⟩
  }

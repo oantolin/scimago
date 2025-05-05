@@ -4,7 +4,7 @@
 
 (defcustom scimago-data-file
   (expand-file-name
-   "mathsjr.lisp"
+   "data/mathsjr.lisp"
    (file-name-directory (locate-library "scimago")))
   "Location of files containing Scimago data."
   :group 'scimago
