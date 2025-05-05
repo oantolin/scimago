@@ -22,9 +22,17 @@
   (cl-loop for (j y q) in scimago-data
            when (equal journal j) collect (cons y q)))
 
+(defun scimago--read-journal ()
+  "Read a JOURNAL title from the minibuffer.
+Use active region as initial contents."
+  (completing-read "Journal: " scimago-data nil t
+                   (when (use-region-p)
+                     (buffer-substring-no-properties
+                      (region-beginning) (region-end)))))
+
 (defun scimago-show-quartiles (journal)
   "Display quartile data for JOURNAL."
-  (interactive (list (completing-read "Journal: " scimago-data)))
+  (interactive (list (scimago--read-journal)))
   (let ((buffer (get-buffer-create (format "*Journal: %s" journal))))
     (with-current-buffer buffer
       (tabulated-list-mode)
@@ -40,7 +48,7 @@
 (defun scimago-copy-quartiles (journal year)
   "Display quartile data for JOURNAL."
   (interactive
-   (let* ((journal (completing-read "Journal: " scimago-data))
+   (let* ((journal (scimago--read-journal))
           (year
            (completing-read
             "Year: "
