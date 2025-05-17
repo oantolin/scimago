@@ -38,7 +38,7 @@ Use active region as initial contents."
       (tabulated-list-mode)
       (setq tabulated-list-format [("Year" 4 t) ("Quartiles" 0 nil)]
             tabulated-list-entries
-            (cl-loop for (y q) in (scimago--quartiles journal)
+            (cl-loop for (y . q) in (scimago--quartiles journal)
                      collect (list y (vector y q))))
       (tabulated-list-init-header)
       (tabulated-list-print))
