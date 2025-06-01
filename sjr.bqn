@@ -5,6 +5,7 @@ bqnlibs ← "/home/omar/code/bqn-libs/"
 csv ⇐ ⟨""";"∾@+10⟩ •Import bqnlibs •file.At "csv.bqn"
 
 DL ⇐ {
+ •file.CreateDir⎊@ "data"
  y ← •Fmt 𝕩
  ⊑•SH ⟨"wget", "-O", "data/scimagojr_"∾y∾".csv",
        "https://www.scimagojr.com/journalrank.php?year="∾y∾"&type=all&out=xls"⟩
