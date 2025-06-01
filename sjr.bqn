@@ -4,6 +4,8 @@ bqnlibs ← "/home/omar/code/bqn-libs/"
 
 csv ⇐ ⟨""";"∾@+10⟩ •Import bqnlibs •file.At "csv.bqn"
 
+str ⇐ •Import bqnlibs •file.At "strings.bqn"
+
 DL ⇐ {
  •file.CreateDir⎊@ "data"
  y ← •Fmt 𝕩
@@ -11,7 +13,9 @@ DL ⇐ {
        "https://www.scimagojr.com/journalrank.php?year="∾y∾"&type=all&out=xls"⟩
 }
 
-SJR ⇐ {csv.Split ¯1↓•file.Chars "data/scimagojr_"∾(•Fmt 𝕩)∾".csv"}
+AdHocFixes ⇐ ⟨⟨"jiu"" "⟩, ⟨"jiu"""" "⟩⟩⊸str.ReplaceAll
+
+SJR ⇐ {csv.Split AdHocFixes ¯1↓•file.Chars "data/scimagojr_"∾(•Fmt 𝕩)∾".csv"}
 
 Years ⇐ {𝕊:∧(•ParseFloat 10↓¯4↓⊢)¨("scimagojr_"≡10⊸↑)¨⊸/•file.List "data"}
 
