@@ -15,9 +15,9 @@ DL ⇐ {
 
 AdHocFixes ⇐ ⟨⟨"jiu"" "⟩, ⟨"jiu"""" "⟩⟩⊸str.ReplaceAll
 
-SJR ⇐ {csv.Split AdHocFixes ¯1↓•file.Chars "data/scimagojr_"∾(•Fmt 𝕩)∾".csv"}
+SJR ⇐ {csv.Split AdHocFixes ¯1↓•file.Chars "data/scimagojr "∾(•Fmt 𝕩)∾".csv"}
 
-Years ⇐ {𝕊:∧(•ParseFloat 10↓¯4↓⊢)¨("scimagojr_"≡10⊸↑)¨⊸/•file.List "data"}
+Years ⇐ {𝕊:∧(•ParseFloat 10↓¯4↓⊢)¨("scimagojr "≡10⊸↑)¨⊸/•file.List "data"}
 
 MathJournals ⇐ {
  fields‿table ← (⊑ ⋈ ⍉∘>∘(1⊸↓)) SJR 𝕩
