@@ -11,10 +11,11 @@
   :type 'file)
 
 (defvar scimago-data
-  (with-temp-buffer
-    (insert-file-contents-literally scimago-data-file)
-    (goto-char (point-min))
-    (read (current-buffer)))
+  (when (file-exists-p scimago-data-file)
+    (with-temp-buffer
+      (insert-file-contents-literally scimago-data-file)
+      (goto-char (point-min))
+      (read (current-buffer))))
   "Alist of Scimago journals, years and quartiles.")
 
 ;;;###autoload
