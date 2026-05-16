@@ -17,6 +17,16 @@
     (read (current-buffer)))
   "Alist of Scimago journals, years and quartiles.")
 
+(defun scimago-download (year)
+  "Use a browser to download Scimago data for YEAR.
+This function opens a browser so the user can download the Scimago data
+for a given year.  It doesn't seem easy to fully automate the download,
+because Scimago makes you go through Cloudflare."
+  (interactive "nYear: ")
+  (browse-url
+   (format "https://www.scimagojr.com/journalrank.php?year=%d&type=all&out=xls"
+           year)))
+  
 (defun scimago--quartiles (journal)
   "Return alist of years and quartiles for JOURNAL."
   (cl-loop for (j y q) in scimago-data
