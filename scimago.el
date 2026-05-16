@@ -17,6 +17,7 @@
     (read (current-buffer)))
   "Alist of Scimago journals, years and quartiles.")
 
+;;;###autoload
 (defun scimago-download (year)
   "Use a browser to download Scimago data for YEAR.
 This function opens a browser so the user can download the Scimago data
@@ -40,6 +41,7 @@ Use active region as initial contents."
                      (buffer-substring-no-properties
                       (region-beginning) (region-end)))))
 
+;;;###autoload
 (defun scimago-show-quartiles (journal)
   "Display quartile data for JOURNAL."
   (interactive (list (scimago--read-journal)))
@@ -55,6 +57,7 @@ Use active region as initial contents."
     (pop-to-buffer buffer)
     (shrink-window-if-larger-than-buffer)))
 
+;;;###autoload
 (defun scimago-copy-quartiles (journal year)
   "Display quartile data for JOURNAL."
   (interactive
